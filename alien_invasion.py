@@ -24,12 +24,12 @@ class AlienInvasion:
     def update(self):
         """Update the ship's position based on the movement flag."""
         if self.moving_right:
-            self.x += self.settings.ship_speed
+            self.ship.x += self.settings.ship_speed
         if self.moving_left:
-            self.x -= self.settings.ship_speed
+            self.ship.x -= self.settings.ship_speed
 
         # Update rect object from self.x.
-        self.rect.x = self.x
+        self.ship.rect.x = self.ship.x
     
     def _check_events(self):
         """Respond to key presses and mouse events."""
