@@ -19,11 +19,14 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
         self.moving_right = False
+        self.moving_left = False
 
     def update(self):
         """Update the ship's position based on the movement flag."""
         if self.moving_right:
             self.ship.rect.x += 1
+        if self.moving_left:
+            self.ship.rect.x -= 1
     
     def _check_events(self):
         """Respond to key presses and mouse events."""
@@ -33,9 +36,14 @@ class AlienInvasion:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.moving_right = True
+                elif event.key == pygame.K_LEFT:
+                    self.moving_left = True
+
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.moving_right = False
+                elif event.key == pygame.K_LEFT:
+                    self.moving_left = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -49,6 +57,7 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self._check_events()
+            self.update()
             self._update_screen()
             self.clock.tick(60)
 
