@@ -23,9 +23,9 @@ class AlienInvasion:
 
     def update(self):
         """Update the ship's position based on the movement flag."""
-        if self.moving_right:
+        if self.moving_right and self.ship.rect.right < self.screen.get_rect().right:
             self.ship.x += self.settings.ship_speed
-        if self.moving_left:
+        if self.moving_left and self.ship.rect.left > 0:
             self.ship.x -= self.settings.ship_speed
 
         # Update rect object from self.x.
