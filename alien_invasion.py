@@ -18,7 +18,13 @@ class AlienInvasion:
                                                self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
+        self.moving_right = False
 
+    def update(self):
+        """Update the ship's position based on the movement flag."""
+        if self.moving_right:
+            self.ship.rect.x += 1
+    
     def _check_events(self):
         """Respond to key presses and mouse events."""
         for event in pygame.event.get():
