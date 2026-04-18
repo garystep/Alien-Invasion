@@ -35,6 +35,9 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
+        # Start the game in an active state.
+        self.stats.game_active = True
+
     def _create_fleet(self):
         """Create the fleet of aliens."""
         # Create an alien and find the number of aliens in a row.
@@ -196,9 +199,12 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self._check_events()
-            self.update()
-            self.bullets.update()
-            self._update_bullets()
+
+            if self.stats.game_active:
+                self.update()
+                self.bullets.update()
+                self._update_bullets()
+            
             self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
