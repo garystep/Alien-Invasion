@@ -113,6 +113,7 @@ class AlienInvasion:
 
             # Reset the game settings.
             self.stats.reset_stats()
+            self.sb.prep_score()
             self.stats.game_active = True
 
             # Hide the mouse cursor.
